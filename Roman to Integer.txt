@@ -1,0 +1,72 @@
+class Solution {
+    public int romanToInt(String s) {
+   int sum=0;
+    char c[]= new char[s.length()+2];
+    for(int i = 0; i < s.length(); i++){
+      c[i]=s.charAt(i);
+    }
+    int j = 0;
+    while(j < s.length()){
+      c[j]=s.charAt(j);
+      if(c[j]=='I'){
+          if(c[j+1]=='V'){
+            sum+=4;
+            j+=2;
+          }
+          else if(c[j+1]=='X'){
+            sum+=9;
+            j+=2;
+          }
+          else{
+          sum+=1;
+          j++;
+          }
+      }
+      else if(c[j]=='V'){
+        sum+=5;
+        j++;
+      }
+      else if(c[j]=='X'){
+        if(c[j+1]=='L'){
+            sum+=40;
+            j+=2;
+          }
+          else if(c[j+1]=='C'){
+            sum+=90;
+            j+=2;
+          }
+          else{
+          sum+=10;
+          j++;
+          }
+      }
+      else if(c[j]=='L'){
+        sum+=50;
+        j++;
+      }
+      else if(c[j]=='C'){
+          if(c[j+1]=='D'){
+            sum+=400;
+            j+=2;
+          }
+          else if(c[j+1]=='M'){
+            sum+=900;
+            j+=2;
+          }
+          else{
+          sum+=100;
+          j++;    
+          }
+      }
+      else if(c[j]=='D'){
+        sum+=500;
+        j++;
+      }
+      else if(c[j]=='M'){
+        sum+=1000;
+        j++;
+      }
+    }
+    return sum;
+    }
+}
