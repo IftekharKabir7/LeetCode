@@ -1,0 +1,51 @@
+class armstrongNumber {
+    
+    public static int power(int x, int y){
+        if(y==0){
+            return 1;
+        }
+        if(y%2==0){
+            return power(x,y/2)*power(x,y/2);
+        }
+        return x*power(x,y/2)*power(x,y/2);
+    }
+    
+    public static int[] splitNumber(int n){
+        String num = String.valueOf(n);
+        int[] digits = new int[num.length()];
+        
+        for(int i=0;i<digits.length;i++){
+            digits[i]= num.charAt(i) - '0';
+        }
+        return digits;
+    }
+    
+    public static int count(int n){
+        String num = String.valueOf(n);
+        return num.length();
+    }
+    
+    public static boolean armstrong(int n){
+        int a[] = splitNumber(n);
+        int numCount= count(n);
+        
+        int sum =0;
+        
+        for(int j=0;j<numCount;j++){
+            sum = sum+power(a[j],numCount);
+        }
+        return sum == n;
+    }
+    
+    public static void main(String[] args) {
+        
+        int n = 153;
+        
+        if(armstrong(n)){
+            System.out.println("true");
+        }
+        else{
+            System.out.println("false");
+        }
+    }
+}
